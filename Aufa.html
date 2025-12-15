@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLearn - Microlearning Adaptif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+            color: #333;
+        }
+        header {
+            background-color: #00539C;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #e0e7ff;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav button:hover {
+            background-color: #00539C;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .container h2 {
+            color: #00539C;
+            margin-bottom: 20px;
+        }
+        .module {
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(135deg, #ffffff, #f2f6ff);
+        }
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .module h3 {
+            margin-top: 0;
+            color: #003366;
+        }
+        .module button {
+            padding: 10px 20px;
+            background-color: #00539C;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .module button:hover {
+            background-color: #003366;
+        }
+        form {
+            margin-top: 10px;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+        .hidden {
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #003366;
+            color: white;
+            margin-top: 30px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        ul#progress-list li {
+            background: #e0e7ff;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SmartLearn</h1>
+    <p>Microlearning Adaptif untuk SDM Unggul Indonesia Emas 2045</p>
+</header>
+
+<nav>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('modules')">Modul Belajar</button>
+    <button onclick="showSection('progress')">Capaian Belajar</button>
+</nav>
+
+<div class="container" id="dashboard">
+    <h2>Selamat Datang di SmartLearn!</h2>
+    <p>Pilih modul belajar di menu "Modul Belajar" dan mulailah pengalaman belajar singkat, fleksibel, dan sesuai kemampuan Anda.</p>
+</div>
+
+<div class="container hidden" id="modules">
+    <h2>Modul Microlearning</h2>
+    
+    <!-- Modul 1 -->
+    <div class="module" data-level="1">
+        <h3>Modul 1: Literasi Digital Dasar</h3>
+        <p>Durasi: 4 menit</p>
+        <p><strong>Soal:</strong> Apa yang dimaksud dengan literasi digital?</p>
+        <form onsubmit="checkAnswer(event, 1)">
+            <input type="radio" name="q1" value="A"> Kemampuan menggunakan komputer dan internet dengan baik<br>
+            <input type="radio" name="q1" value="B"> Kemampuan membaca buku teks<br>
+            <input type="radio" name="q1" value="C"> Kemampuan menulis cerita panjang<br>
+            <button type="submit">Jawab</button>
+        </form>
+    </div>
+
+    <!-- Modul 2 -->
+    <div class="module" data-level="2">
+        <h3>Modul 2: Pemecahan Masalah Sederhana</h3>
+        <p>Durasi: 5 menit</p>
+        <p><strong>Soal:</strong> Jika sebuah komputer tidak menyala, langkah pertama yang harus dilakukan adalah?</p>
+        <form onsubmit="checkAnswer(event, 2)">
+            <input type="radio" name="q2" value="A"> Menyalakan tombol power<br>
+            <input type="radio" name="q2" value="B"> Memanggil teknisi<br>
+            <input type="radio" name="q2" value="C"> Membeli komputer baru<br>
+            <button type="submit">Jawab</button>
+        </form>
+    </div>
+
+    <!-- Modul 3 -->
+    <div class="module" data-level="3">
+        <h3>Modul 3: Penguasaan Teknologi Dasar</h3>
+        <p>Durasi: 3 menit</p>
+        <p><strong>Soal:</strong> Apa fungsi utama dari sistem operasi pada komputer?</p>
+        <form onsubmit="checkAnswer(event, 3)">
+            <input type="radio" name="q3" value="A"> Mengelola hardware dan software<br>
+            <input type="radio" name="q3" value="B"> Membuat kopi<br>
+            <input type="radio" name="q3" value="C"> Menulis dokumen<br>
+            <button type="submit">Jawab</button>
+        </form>
+    </div>
+</div>
+
+<div class="container hidden" id="progress">
+    <h2>Capaian Belajar</h2>
+    <ul id="progress-list">
+        <li>Belum ada modul yang diselesaikan.</li>
+    </ul>
+</div>
+
+<footer>
+    &copy; 2025 SmartLearn Project | Indonesia Emas 2045
+</footer>
+
+<script>
+    function showSection(id) {
+        document.getElementById('dashboard').classList.add('hidden');
+        document.getElementById('modules').classList.add('hidden');
+        document.getElementById('progress').classList.add('hidden');
+        document.getElementById(id).classList.remove('hidden');
+    }
+
+    function checkAnswer(event, moduleNumber) {
+        event.preventDefault();
+        let selected;
+        if (moduleNumber === 1) selected = document.querySelector('input[name="q1"]:checked');
+        if (moduleNumber === 2) selected = document.querySelector('input[name="q2"]:checked');
+        if (moduleNumber === 3) selected = document.querySelector('input[name="q3"]:checked');
+
+        if (!selected) {
+            alert('Silakan pilih jawaban!');
+            return;
+        }
+
+        // Jawaban benar
+        let correctAnswers = {1: 'A', 2: 'A', 3: 'A'};
+        if (selected.value === correctAnswers[moduleNumber]) {
+            alert('Jawaban benar! Modul selesai.');
+        } else {
+            alert('Jawaban salah. Silakan coba lagi.');
+            return;
+        }
+
+        // Tambahkan ke capaian belajar
+        let moduleName = document.querySelector(`.module[data-level="${moduleNumber}"] h3`).innerText;
+        let progressList = document.getElementById('progress-list');
+        if(progressList.innerHTML.includes('Belum ada modul')) progressList.innerHTML = '';
+        let li = document.createElement('li');
+        li.textContent = `${moduleName} selesai`;
+        progressList.appendChild(li);
+    }
+</script>
+
+</body>
+</html>
